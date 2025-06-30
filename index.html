@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManaged</title>
+</head>
+<body>
+    <header>
+        <title>TaskManaged</title>
+    </header>
+
+    <form>
+        <h1>List View</h1>
+        <input type="text" placeholder="Add tasks...">
+
+        <fieldset>
+            <legend>Priority:</legend>
+                <label>
+                <input type="radio" name="priority" value="high">
+                High
+            </label>
+            <label>
+                <input type="radio" name="priority" value="low">
+                Low
+            </label>
+            <label>
+                <input type="radio" name="priority" value="medium">
+                Medium
+            </label>
+        </fieldset>
+
+        <label for="due-date">Due Date:</label>
+        <input type="date" id="due-date" name="due-date">
+
+        <button type="submit">Add Task</button>
+    </form>
+
+
+</body>
+</html>
