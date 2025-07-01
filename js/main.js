@@ -24,6 +24,17 @@ function renderTasks() {
             task.completed = !task.completed;
             li.classList.toggle('completed');
         });
+
+        const deleteBtn = document.createElement('span'); // Create delete button
+        deleteBtn.innerHTML = '<img src="./icons/trash-icon.svg" alt="Delete Task" width="20" height="20">';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.addEventListener('click', function(event) { // Add event listener for delete
+            event.stopPropagation(); // Prevent triggering the li click event
+            tasks.splice(tasks.indexOf(task), 1); // Remove task from array
+            renderTasks(); // Re-render tasks
+        });
+        li.appendChild(deleteBtn); // Append delete button to the list item
+
         taskList.appendChild(li);
     });
 }
