@@ -84,21 +84,55 @@ button:hover {
     background-color: #00509e;
 }
 
-task-list {
+.task-list {
     margin-top: 2rem;
+    width: 600px;
+    list-style: none;
+    padding-left: 0;
 }
-task-item {
+.task-item {
     background-color: #f0f0f0;
+    width : 85%;
     padding: 1rem;
     border-radius: 10px;
     margin-bottom: 1rem;
+    list-style: none;
+    position:relative;
+    padding-left: 2rem;
+    box-sizing: border-box;
 }
-
-task-item.completed {
+.task-item.high {
+    border-left: 15px solid red;
+}
+.task-item.medium {
+    border-left: 15px solid orange;
+}
+.task-item.low {
+    border-left: 15px solid green;
+}
+.task-item.overdue {
+    border-left: 15px solid black;
+    background-color: red;
+}
+.task-item.completed {
     text-decoration: line-through;
     color: gray;
 }
-
+.task-item::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border: 2px solid #00386c;
+    border-radius: 50%;
+    background-color: white;
+}
+.task-item.completed::before {
+    background-color: #00386c;
+}
 
 @media (min-width: 600px) {
     form {

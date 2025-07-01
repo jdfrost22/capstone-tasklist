@@ -2,6 +2,32 @@ const tasks = []; // Array to hold tasks
 
 const form = document.querySelector('form'); // Select the form element
 
+function renderTasks() {
+    const taskList = document.getElementById('task-list');
+    taskList.innerHTML = ''; // Clear existing tasks so that it doesn't duplicate
+
+
+    tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.classList.add('task-item');
+        li.classList.add(task.priority); // Add priority class
+        li.textContent = `${task.text} - Due: ${task.dueDate}`;
+        const now = new Date();
+        const dueDate = new Date(task.dueDate);
+        if (dueDate < now) {
+            li.classList.add('overdue'); // Add overdue class if the task is past due
+        }
+        if (task.completed) {
+            li.classList.add('completed'); // Add completed class if the task is completed
+        }
+        li.addEventListener('click', function() { // Toggle completed status on click
+            task.completed = !task.completed;
+            li.classList.toggle('completed');
+        });
+        taskList.appendChild(li);
+    });
+}
+
 form.addEventListener('submit', function(event) { // Add event listener for form submission
     event.preventDefault(); // Prevent default form submission behavior
     
@@ -18,13 +44,10 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         completed: false
     }
     tasks.push(newTask); // Add the new task to the tasks array
-    console.log(tasks); // Log the tasks array to the console
-
+    // console.log(tasks); // Log the tasks array to the console
+    renderTasks();
     // Clear form inputs
     taskInput.value = '';
     priorityInput.checked = false;
     dueDateInput.value = '';
 });
-
-
-
