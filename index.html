@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
-    <header>
-        <title>TaskManaged</title>
+    <header class="site-header">
+        <div class="site-title">TaskManaged</div>
+        <a href="calendar.html" title="Go to Calendar View" class="calendar-icon">
+            <img src="./icons/calendar-icon.svg" alt="Calendar View" width="50" height="50" class="calendar-icon" />
+        </a>
     </header>
 
     <form>
-        <h1>List View</h1>
+        <h1>Add Task</h1>
         <input type="text" placeholder="Add tasks...">
 
         <fieldset>
@@ -22,18 +25,19 @@
                 High
             </label>
             <label>
+                <input type="radio" name="priority" value="medium">
+                Medium
+            </label> 
+            <label>
                 <input type="radio" name="priority" value="low">
                 Low
             </label>
-            <label>
-                <input type="radio" name="priority" value="medium">
-                Medium
-            </label>
         </fieldset>
 
-        <label for="due-date">Due Date:</label>
-        <input type="date" id="due-date" name="due-date">
-
+        <div class="due-date-group">
+            <label for="due-date">Due Date:</label>
+            <input type="date" id="due-date" name="due-date">
+        </div>
         <button type="submit">Add Task</button>
     </form>
     
