@@ -31,8 +31,11 @@ body {
     cursor: pointer;
     max-width: 40px;
     height: auto;
-    
-    
+}
+.list-icon img {
+    cursor: pointer;
+    max-width: 40px;
+    height: auto;
 }
 .site-title {
     font-size: 1.5rem;

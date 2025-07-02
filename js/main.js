@@ -1,14 +1,14 @@
-function sortByDueDate() {
+function sortByDueDate() { // Sort tasks by due date
     tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
     renderTasks();
 }
-function sortByPriority() {
+function sortByPriority() { // Sort tasks by priority
     const priorityOrder = { high: 1, medium: 2, low: 3 };
     tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
     renderTasks();
 }
-function sortByDefault() {
-    tasks.sort((a, b) => a.id - b.id); // Sort by creation date (id)
+function sortByDefault() { // Sort by creation date (id)
+    tasks.sort((a, b) => a.id - b.id); 
     renderTasks();
 }
 
