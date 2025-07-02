@@ -46,21 +46,37 @@ function renderTasks() {
         const li = document.createElement('li');
         li.classList.add('task-item');
         li.classList.add(task.priority); // Add priority class
+        
+        const dueDateObj = parseESTDate(task.dueDate); // Parse due date
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+
+        let dueText= '';
+        const daysUntilDue = Math.ceil((dueDateObj - now) / (1000 * 60 * 60 * 24)); // Calculate days until due
+        if (daysUntilDue === 0) {
+            dueText = 'Due Today'; // If due today
+        } else if (daysUntilDue === 1) {
+            dueText = 'Due Tomorrow'; // If due tomorrow
+        } else if (daysUntilDue < 0) {
+            dueText = `OVERDUE`; // If overdue
+        }
+            else {
+            dueText = `Due in ${daysUntilDue} days`; // If due in future
+        }
+        
         li.innerHTML = `
             <div class="left-group">
                 <span class="task-text">${task.text}</span>
             </div>
             <div class="right-group">
-                <span class="due-date">Due: ${parseESTDate(task.dueDate).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit' })}</span>
+                <span class="due-date">${dueText}</span>
             </div>
         `;
-        const now = new Date();
-        const dueDate = parseESTDate(task.dueDate);
-    
-        if (dueDate < now) {
+           
+        if (dueDateObj < now) {
             li.classList.add('overdue'); // Add overdue class if the task is past due
         }
-        if (dueDate.toDateString() === now.toDateString()) {
+        if (dueDateObj.toDateString() === now.toDateString()) {
             li.classList.add('due-today'); // Add due-today class if the task
         }
         if (task.completed) {
