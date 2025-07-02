@@ -40,7 +40,14 @@
         </div>
         <button type="submit">Add Task</button>
     </form>
-    
+    <div class="sort-options">
+        <label for="sort-tasks">Sort by:</label>
+        <select id="sort-tasks">
+            <option value="default">Date created</option>
+            <option value="priority">Priority</option>
+            <option value="due-date">Due Date</option>
+        </select>
+    </div>
     <ul id="task-list" class="task-list"></ul>
 
     <script src="./js/main.js"></script>

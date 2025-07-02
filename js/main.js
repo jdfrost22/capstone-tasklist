@@ -1,3 +1,29 @@
+function sortByDueDate() {
+    tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+    renderTasks();
+}
+function sortByPriority() {
+    const priorityOrder = { high: 1, medium: 2, low: 3 };
+    tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    renderTasks();
+}
+function sortByDefault() {
+    tasks.sort((a, b) => a.id - b.id); // Sort by creation date (id)
+    renderTasks();
+}
+
+// Add event listener for sort options
+document.getElementById('sort-tasks').addEventListener('change', function(event) {
+    const sortValue = event.target.value;
+    if (sortValue === 'due-date') {
+        sortByDueDate();
+    } else if (sortValue === 'priority') {
+        sortByPriority();
+    } else if (sortValue === 'default') {
+        sortByDefault();
+    }
+});
+
 const tasks = []; // Array to hold tasks
 
 const form = document.querySelector('form'); // Select the form element
