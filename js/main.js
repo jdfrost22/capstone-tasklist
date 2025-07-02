@@ -12,6 +12,15 @@ function sortByDefault() { // Sort by creation date (id)
     renderTasks();
 }
 
+function updateTaskStats() {
+    const completed = tasks.filter(task => task.completed).length; // Count completed tasks
+    const uncompleted = tasks.length - completed; // Count uncompleted tasks
+    const stats = document.getElementById('task-stats');
+    if (stats) {
+        stats.textContent = `Remaining: ${uncompleted} | Completed: ${completed} | Total: ${tasks.length}`;
+    }
+}
+
 // Add event listener for sort options
 document.getElementById('sort-tasks').addEventListener('change', function(event) {
     const sortValue = event.target.value;
@@ -61,6 +70,7 @@ function renderTasks() {
             task.completed = !task.completed;
             li.classList.toggle('completed');
             saveData(); // Save the updated task list to localStorage
+            updateTaskStats()
         });
 
         const deleteBtn = document.createElement('span'); // Create delete button
@@ -71,11 +81,13 @@ function renderTasks() {
             tasks.splice(tasks.indexOf(task), 1); // Remove task from array
             renderTasks(); // Re-render tasks
             saveData(); // Save the updated task list to localStorage
+            updateTaskStats()
         });
         li.querySelector('.right-group').appendChild(deleteBtn); // Append delete button to the list item
 
         taskList.appendChild(li);
     });
+    
     
 }
 
@@ -150,3 +162,4 @@ function loadData() {
 }
 
 loadData(); // Load tasks from localStorage on page load
+updateTaskStats(); // Update task statistics on page load
