@@ -50,6 +50,24 @@ form.addEventListener('submit', function(event) { // Add event listener for form
     const priorityInput = document.querySelector('input[name="priority"]:checked');
     const dueDateInput = document.getElementById('due-date');
 
+    if (taskInput.value.trim() === '') { // Validate task input
+        alert('Please enter a task.');
+        return;
+    }
+    if (!priorityInput) { // Validate priority input
+        alert('Please select a priority.');
+        return;
+    }
+    if (dueDateInput.value === '') { // Validate due date input
+        alert('Please select a due date.');
+        return;
+    }
+    const today = new Date().toISOString().split('T')[0];
+    if (dueDateInput.value < today) { // Validate due date is not in the past
+        alert('Due date cannot be in the past.');
+        return;
+    }
+
     const newTask = {  // Create a new task object
         id: Date.now(),
         text: taskInput.value,
