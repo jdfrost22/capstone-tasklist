@@ -16,13 +16,17 @@ function renderTasks() {
                 <span class="task-text">${task.text}</span>
             </div>
             <div class="right-group">
-                <span class="due-date">Due: ${task.dueDate}</span>
+                <span class="due-date">Due: ${parseESTDate(task.dueDate).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit' })}</span>
             </div>
         `;
         const now = new Date();
-        const dueDate = new Date(task.dueDate);
+        const dueDate = parseESTDate(task.dueDate);
+    
         if (dueDate < now) {
             li.classList.add('overdue'); // Add overdue class if the task is past due
+        }
+        if (dueDate.toDateString() === now.toDateString()) {
+            li.classList.add('due-today'); // Add due-today class if the task
         }
         if (task.completed) {
             li.classList.add('completed'); // Add completed class if the task is completed
@@ -49,6 +53,11 @@ function renderTasks() {
     
 }
 
+function parseESTDate(dateString) {
+        const [year, month, day] = dateString.split('-').map(Number);
+        return new Date(year, month - 1, day);
+}
+
 form.addEventListener('submit', function(event) { // Add event listener for form submission
     event.preventDefault(); // Prevent default form submission behavior
     
@@ -69,8 +78,12 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         alert('Please select a due date.');
         return;
     }
-    const today = new Date().toISOString().split('T')[0];
-    if (dueDateInput.value < today) { // Validate due date is not in the past
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of today
+    const dueDate = parseESTDate(dueDateInput.value);
+
+    if (dueDate < today) { // Validate due date is not in the past
         alert('Due date cannot be in the past.');
         return;
     }

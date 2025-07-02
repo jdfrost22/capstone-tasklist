@@ -86,25 +86,25 @@ button:hover {
 }
 
 .task-list {
-    margin-top: 2rem;
-    width: 600px;
+    margin: 2rem auto 0 auto;
+    width: 85%;
     list-style: none;
     padding-left: 0;
 }
 .task-item {
     background-color: #f0f0f0;
-    width : 85%;
+    width : 100%;
     padding: 1rem;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin: 1rem auto;
     list-style: none;
     position:relative;
     padding-left: 2rem;
-    box-sizing: border-box;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 
 }
 .task-item.high {
@@ -118,6 +118,13 @@ button:hover {
 }
 .task-item.overdue { 
     background-color: orange;;
+}
+.task-item.due-today {
+    background-color: yellow;
+}   
+.task-item.overdue .due-date {
+    color: red;
+    font-weight: bold;
 }
 .task-item.completed {
     text-decoration: line-through;
@@ -149,8 +156,20 @@ button:hover {
     filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(0deg) brightness(90%);
     
 }
+.left-group, .right-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.right-group {
+    align-items: flex-end;
+}
 
-
+.due-date {
+    font-size: 0.9rem;
+    color: #555;
+}
 @media (min-width: 600px) {
     form {
         display: grid;
@@ -180,5 +199,11 @@ button:hover {
     }
     form button {
         grid-area: button;
+    }
+    .left-group, .right-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
     }
 }
