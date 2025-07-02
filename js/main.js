@@ -11,7 +11,14 @@ function renderTasks() {
         const li = document.createElement('li');
         li.classList.add('task-item');
         li.classList.add(task.priority); // Add priority class
-        li.textContent = `${task.text} - Due: ${task.dueDate}`;
+        li.innerHTML = `
+            <div class="left-group">
+                <span class="task-text">${task.text}</span>
+            </div>
+            <div class="right-group">
+                <span class="due-date">Due: ${task.dueDate}</span>
+            </div>
+        `;
         const now = new Date();
         const dueDate = new Date(task.dueDate);
         if (dueDate < now) {
@@ -35,7 +42,7 @@ function renderTasks() {
             renderTasks(); // Re-render tasks
             saveData(); // Save the updated task list to localStorage
         });
-        li.appendChild(deleteBtn); // Append delete button to the list item
+        li.querySelector('.right-group').appendChild(deleteBtn); // Append delete button to the list item
 
         taskList.appendChild(li);
     });
