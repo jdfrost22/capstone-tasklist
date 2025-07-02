@@ -23,6 +23,7 @@ function renderTasks() {
         li.addEventListener('click', function() { // Toggle completed status on click
             task.completed = !task.completed;
             li.classList.toggle('completed');
+            saveData(); // Save the updated task list to localStorage
         });
 
         const deleteBtn = document.createElement('span'); // Create delete button
@@ -32,11 +33,13 @@ function renderTasks() {
             event.stopPropagation(); // Prevent triggering the li click event
             tasks.splice(tasks.indexOf(task), 1); // Remove task from array
             renderTasks(); // Re-render tasks
+            saveData(); // Save the updated task list to localStorage
         });
         li.appendChild(deleteBtn); // Append delete button to the list item
 
         taskList.appendChild(li);
     });
+    
 }
 
 form.addEventListener('submit', function(event) { // Add event listener for form submission
@@ -57,8 +60,23 @@ form.addEventListener('submit', function(event) { // Add event listener for form
     tasks.push(newTask); // Add the new task to the tasks array
     // console.log(tasks); // Log the tasks array to the console
     renderTasks();
+    saveData(); // Save the updated task list to localStorage
     // Clear form inputs
     taskInput.value = '';
     priorityInput.checked = false;
     dueDateInput.value = '';
 });
+
+function saveData() {
+    localStorage.setItem("tasks", JSON.stringify(tasks) ); // Save tasks array to localStorage
+}
+function loadData() {
+    const savedTasks = localStorage.getItem("tasks"); // Get tasks from localStorage
+    if (savedTasks) {
+        const parsedTasks = JSON.parse(savedTasks);
+        tasks.push(...parsedTasks); // Populate tasks array with saved tasks
+        renderTasks(); // Render tasks to the DOM
+    }
+}
+
+loadData(); // Load tasks from localStorage on page load
