@@ -127,7 +127,7 @@ form.addEventListener('submit', function(event) { // Add event listener for form
     saveData(); // Save the updated task list to localStorage
     // Clear form inputs
     taskInput.value = '';
-    priorityInput.checked = false;
+    document.querySelector('input[name="priority"]:checked').checked = false; // Reset priority selection
     dueDateInput.value = '';
 });
 
