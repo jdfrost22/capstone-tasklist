@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         events: [...localTasks, ...holidays],
+        eventContent: function(arg) {
+            if (arg.event.classNames.includes('localTasks')) {
+                const [icon, ...textParts] = arg.event.title.split(' ');
+                const text = textParts.join(' ');
+                return {
+                    html: `<span class="task-icon">${icon}</span> <span class="task-text">${text}</span>`
+                };
+            }
+            return true; // Default rendering for other events
+        }    
     });
     calendar.render();
 });
@@ -54,6 +64,7 @@ function loadEventsFromLocalStorage() {
                 title: `${priorityIcons[task.priority]} ${task.text}`,
                 start: task.dueDate,
                 allDay: true,
+                classNames: ['localTasks'],
                 extendedProps: {
                     priority: task.priority,
                     completed: task.completed

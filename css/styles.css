@@ -174,9 +174,65 @@ button:hover {
     color: #555;
 }
 
+#calendar {
+    width: 85%;
+    margin: 2rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.fc-daygrid-day-number {
+    font-size: 0.5rem;
+}
+
+.fc-daygrid-event {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
+.fc-event.holiday {
+    background-color: transparent;
+    font-size: 0.5rem;
+    border: none;
+}
+.fc-event.localTasks {
+    color: #fff;
+    background-color: transparent;
+    border: none
+}
 
+
+@media (max-width:599px) {
+    .fc .fc-button {
+        background-color: #00386c;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 50px;
+        cursor: pointer;
+        width: 55px;
+    }
+    
+    .fc .fc-toolbar {
+        padding: 0.5rem;
+        border-radius: 10px;
+        display: flex !important;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 0.75rem;
+    }
+    #calendar {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .fc-event .task-text {
+        display: none;
+    }
+}
 
 
 @media (min-width: 600px) {
@@ -215,5 +271,5 @@ button:hover {
         align-items: center;
         gap: 0.5rem;
     }
-}
+};
 
