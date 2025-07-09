@@ -2,7 +2,9 @@
 # TaskManaged
 
 **TaskManaged** is a responsive, interactive web application designed to help users manage their tasks visually and efficiently. The app features both a task list view and a calendar view, allowing users to add tasks with due dates and priorities, track progress, and stay organized. Users can sort tasks by due date, priority, or creation time, and each task displays a countdown (e.g., "Due in 3 days") to help with time management. The calendar view integrates U.S. public holidays fetched from an external API and overlays them above tasks on the corresponding dates, providing helpful context for planning.
+
 ---
+
 ### Main Features
 
 1. **Calendar-Date-Picker & Dynamic Countdown Display**  
@@ -36,6 +38,8 @@ This project fulfills the following requirements from the assignment list:
 - **Implement modern interactive UI features**:  
   The app integrates multiple modern UI elements: a calendar-date-picker for setting task deadlines and a dynamic sort dropdown for sorting tasks by different criteria (due date, priority, creation).
 
+---
+
 ### How to Run This Project
 
 1. **Clone the Github repository.**
@@ -57,7 +61,6 @@ This project fulfills the following requirements from the assignment list:
 - `js/main.js` – Task management logic  
 - `js/calendar.js` – Calendar rendering and API integration  
 - `css/styles.css` – Styling for both views  
-
 ---
 
 
