@@ -124,9 +124,9 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         alert('Please enter a task.');
         return;
     }
-    const taskNameRegex = /^[a-zA-Z0-9\s.,!?-]{3,30}$/;
+    const taskNameRegex = /^[a-zA-Z0-9\s.,!?-]{3,60}$/;
     if (!taskNameRegex.test(taskInput.value.trim())) { // Validate task name
-        alert('Enter a valid task name under 30 characters and no special characters except .,!?-');
+        alert('Enter a valid task name under 60 characters and no special characters except .,!?-');
         return;
     }
 

@@ -2,12 +2,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(135deg, #025a45, #4394d2);
+    background-color: #122c34;
     min-height: 100vh;
     margin: 0;
     margin-top: 60px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color:#000000;
+    color: #EFFBFB
 }
 .site-header {
     position: fixed;
@@ -22,7 +22,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     box-sizing: border-box;
     overflow: hidden;
@@ -47,7 +46,7 @@ h1 {
     text-align: left;
 }
 form {
-    background-color: #d7d7d7;
+    background-color: #224870;
     padding: 1rem 1rem 0.5rem 1rem;
     border-radius: 20px;
     width: 85%;
@@ -62,6 +61,7 @@ input[type="text"], input[type="date"] {
     width: 100%;
     height: 2rem;
     box-sizing: border-box;
+    border-radius: 20px;
 }
 
 fieldset {
@@ -71,7 +71,7 @@ fieldset {
 }
 
 button {
-    background-color: #00386c;
+    background-color: #122C34;
     color: white;
     border: none;
     padding: 1rem;
@@ -82,10 +82,16 @@ button {
     align-self: center;
     box-sizing: border-box;
     margin-bottom: 0px;
-
+    font-size: 0.8rem;
 }
 button:hover {
     background-color: #00509e;
+}
+
+.task-stats {
+   margin-top: 10px;
+   font-size: 0.9rem;
+   margin-bottom: 0;
 }
 
 .task-list {
@@ -95,7 +101,7 @@ button:hover {
     padding-left: 0;
 }
 .task-item {
-    background-color: #f0f0f0;
+    background-color: #224870;
     width : 100%;
     padding: 1rem;
     border-radius: 10px;
@@ -111,13 +117,13 @@ button:hover {
 
 }
 .task-item.high {
-    border-left: 15px solid red;
+    border-left: 15px solid #FF4B3E;
 }
 .task-item.medium {
-    border-left: 15px solid orange;
+    border-left: 15px solid #FFE548;
 }
 .task-item.low {
-    border-left: 15px solid green;
+    border-left: 15px solid #99D17B;
 }
 .task-item.overdue { 
     background-color: orange;;
@@ -146,7 +152,7 @@ button:hover {
     background-color: white;
 }
 .task-item.completed::before {
-    background-color: #00386c;
+    background-color: #122c34;
 }
 .delete-btn {
     background: none;
@@ -154,9 +160,10 @@ button:hover {
     padding: 0;
     margin: 0;
     cursor: pointer;
+    color:#EFFBFB
 }
 .delete-btn:hover img {
-    filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(0deg) brightness(90%);
+    filter: sepia(1);
     
 }
 .left-group, .right-group {
@@ -165,21 +172,23 @@ button:hover {
     align-items: flex-start;
     gap: 0.5rem;
 }
+
 .right-group {
     align-items: flex-end;
+    font-size: 0.5rem;
 }
 
 .due-date {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.5rem;
 }
 
 #calendar {
     width: 85%;
+    min-height: 415px;
     margin: 2rem auto;
-    border-radius: 10px;
     overflow: hidden;
 }
+
 .fc-daygrid-day-number {
     font-size: 0.5rem;
 }
@@ -196,34 +205,37 @@ button:hover {
 
 .fc-event.holiday {
     background-color: transparent;
-    font-size: 0.5rem;
     border: none;
+    margin-bottom: auto;
+    
 }
 .fc-event.localTasks {
-    color: #fff;
     background-color: transparent;
-    border: none
+    border: none;
+    
 }
-
-
-@media (max-width:599px) {
-    .fc .fc-button {
+.fc .fc-button {
         background-color: #00386c;
-        color: white;
         border: none;
         padding: 0.25rem 0.5rem;
         border-radius: 50px;
         cursor: pointer;
         width: 55px;
-    }
-    
-    .fc .fc-toolbar {
+        font-size: 0.75rem;
+}
+.fc .fc-toolbar {
         padding: 0.5rem;
-        border-radius: 10px;
         display: flex !important;
         justify-content: space-between;
         flex-wrap: wrap;
-        font-size: 0.75rem;
+}
+
+@media (max-width:599px) {
+    .left-group {
+        max-width: 180px;
+    }
+    .fc .fc-toolbar-title {
+        font-size: 0.9rem;
     }
     #calendar {
         width: 90%;
@@ -231,6 +243,10 @@ button:hover {
     }
     .fc-event .task-text {
         display: none;
+    }
+    .fc-event.holiday {
+        font-size: 0.2rem !important;
+        
     }
 }
 
@@ -272,4 +288,3 @@ button:hover {
         gap: 0.5rem;
     }
 };
-

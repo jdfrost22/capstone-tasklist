@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        events: [...localTasks, ...holidays],
+        events: [...holidays, ...localTasks],
+        eventOrder: "classNames",
         eventContent: function(arg) {
             if (arg.event.classNames.includes('localTasks')) {
                 const [icon, ...textParts] = arg.event.title.split(' ');
