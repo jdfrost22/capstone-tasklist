@@ -3,9 +3,7 @@
 
 **TaskManaged** is a responsive, interactive web application designed to help users manage their tasks visually and efficiently. The app features both a task list view and a calendar view, allowing users to add tasks with due dates and priorities, track progress, and stay organized. Users can sort tasks by due date, priority, or creation time, and each task displays a countdown (e.g., "Due in 3 days") to help with time management. The calendar view integrates U.S. public holidays fetched from an external API and overlays them above tasks on the corresponding dates, providing helpful context for planning.
 
-### Features
-
-This project incorporates the following interactive and modern web features:
+### Main Features
 
 1. **Calendar-Date-Picker & Dynamic Countdown Display**  
    Users can assign due dates to tasks using an HTML date picker. The interface then dynamically displays how many days are left until each task is due (e.g., “Due Tomorrow”).
@@ -32,7 +30,6 @@ This project fulfills the following requirements from the assignment list:
 - **Make a fetch request to an API and use the response**:  
   The calendar view fetches public holidays from the Nager.Date API and integrates them into the calendar alongside tasks, styled to show above them.
 
- 
 - **Persist data and make it accessible after reload/refresh**:  
   Task data is stored using the browser's `localStorage` API. When the app loads, it reads saved tasks from localStorage and renders them automatically, ensuring that the user’s data remains intact across sessions and page reloads.
 
@@ -42,14 +39,16 @@ This project fulfills the following requirements from the assignment list:
 ### How to Run This Project
 
 1. **Clone the Github repository.**
-2. Open the `index.html` file in your browser to access the task list view.
-3. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
-4. To see the full functionality:
+2. Open the entire project folder in VS Code
+3. Open the `index.html` file in your browser to access the task list view using a local server (using the Live Server Extension in VS Code)
+4. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
+5. To see the full functionality:
    - Add a few tasks with different priorities and due dates.
    - View them in both list and calendar formats.
    - Ensure you are connected to the internet so the holiday data can be fetched from the API.
+   - test functionality of sorting the task list, deleting individual tasks, and marking tasks as completed
 
-> ⚠️ If you're using a local server (like VS Code Live Server), ensure that `calendar.html` is served with the proper relative paths so that the JS files and API request work properly.
+> Make sure that the file and folder structure stays intact and that you open the entire project folder in VS code (not just individual files). 
 
 ### Project Structure
 
@@ -60,8 +59,6 @@ This project fulfills the following requirements from the assignment list:
 - `css/styles.css` – Styling for both views  
 
 ---
-
-Feel free to improve the styling or add your own additional features such as category filters, drag-and-drop tasks, or sound alerts!
 
 
 
