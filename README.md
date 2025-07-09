@@ -2,7 +2,7 @@
 # TaskManaged
 
 **TaskManaged** is a responsive, interactive web application designed to help users manage their tasks visually and efficiently. The app features both a task list view and a calendar view, allowing users to add tasks with due dates and priorities, track progress, and stay organized. Users can sort tasks by due date, priority, or creation time, and each task displays a countdown (e.g., "Due in 3 days") to help with time management. The calendar view integrates U.S. public holidays fetched from an external API and overlays them above tasks on the corresponding dates, providing helpful context for planning.
-
+---
 ### Main Features
 
 1. **Calendar-Date-Picker & Dynamic Countdown Display**  
