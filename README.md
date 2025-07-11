@@ -43,14 +43,14 @@ This project fulfills the following requirements from the assignment list:
 ### How to Run This Project
 
 1. **Clone the Github repository.**
-2. Open the entire project folder in VS Code
-3. Open the `index.html` file in your browser to access the task list view using a local server (using the Live Server Extension in VS Code)
+2. Open the entire project folder in VS Code.
+3. Open the `index.html` file in your browser to access the task list view using a local server (using the Live Server Extension in VS Code).
 4. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
 5. To see the full functionality:
    - Add a few tasks with different priorities and due dates.
    - View them in both list and calendar formats.
    - Ensure you are connected to the internet so the holiday data can be fetched from the API.
-   - test functionality of sorting the task list, deleting individual tasks, and marking tasks as completed
+   - Test functionality of sorting the task list, deleting individual tasks, and marking tasks as completed.
 
 > Make sure that the file and folder structure stays intact and that you open the entire project folder in VS code (not just individual files). 
 
