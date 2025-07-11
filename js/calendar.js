@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async function() { 
+document.addEventListener('DOMContentLoaded', async function() { // Display calendar view once DOM content is fully loaded
     const calendarEl = document.getElementById('calendar');
     
     const localTasks = loadEventsFromLocalStorage();
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     calendar.render();
 });
 
-async function fetchHolidays() {
+async function fetchHolidays() {   // Fetch public holiday data from the API for the current year in the US 
     const year = new Date().getFullYear();
     const url = `https://date.nager.at/api/v3/PublicHolidays/${year}/us`;
 
@@ -32,7 +32,7 @@ async function fetchHolidays() {
             throw new Error('Could not fetch holidays');
         }
         const holidays = await response.json();
-        return holidays.map(holiday => {
+        return holidays.map(holiday => { // Map the API response to FullCalendar event object
             return {
                 title: holiday.localName,
                 start: holiday.date,
@@ -42,13 +42,13 @@ async function fetchHolidays() {
         });
 
     }
-    catch (error) {
+    catch (error) { // Log any errors during the fetch operation
         console.error('Error fetching holidays:', error);
-    return [];
+        return [];
     }
 }
 
-function loadEventsFromLocalStorage() {
+function loadEventsFromLocalStorage() {     // Load tasks from localStorage and convert them into FullCalendar event objects
     const priorityIcons = {
         high: '🔴',
         medium: '🟠',
