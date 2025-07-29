@@ -4,12 +4,22 @@ document.addEventListener('DOMContentLoaded', async function() { // Display cale
     const localTasks = loadEventsFromLocalStorage();
     const holidays = await fetchHolidays();
     
-    const initialView = window.innerWidth < 600 ? 'dayGridDay' : 'dayGridMonth'; // Responsive view based on screen width 
-
+    
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: initialView,
+        initialView: 'dayGridMonth',
+        contentHeight: 'auto',
         events: [...holidays, ...localTasks],
         eventOrder: "classNames",
+        
+        dateClick: function(info) { // Handle date click to show tasks for that day
+            renderListView(info.dateStr, holidays);
+        },
+
+        eventClick: function(info) { // adds the same functionality as dateClick even over the events
+            info.jsEvent.preventDefault(); // Prevent default action
+            renderListView(info.event.startStr, holidays);
+        },
+
         eventContent: function(arg) {
             if (arg.event.classNames.includes('localTasks')) {
                 const [icon, ...textParts] = arg.event.title.split(' ');
@@ -23,6 +33,33 @@ document.addEventListener('DOMContentLoaded', async function() { // Display cale
     });
     calendar.render();
 });
+
+function renderListView(dateStr, holidays) { // Render the list view for tasks on a specific date
+    const listEl = document.getElementById('day-list-view');
+    listEl.innerHTML = ''; // Clear previous content
+
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Load tasks from localStorage
+    const filteredTasks = tasks.filter(task => task.dueDate === dateStr); // Filter tasks for the selected date
+    
+    const ul = document.createElement('ul');
+    ul.classList.add('task-list');
+
+    filteredTasks.forEach(task => { // Create list items for each task
+        const li = document.createElement('li');
+        li.classList.add('task-item', task.priority);
+        li.innerHTML = `<div class="task-text">${task.text}</div>`;
+        if (task.completed) {
+            li.classList.add('completed');
+        }
+        li.addEventListener('click', function() { // Toggle completed status on click
+            task.completed = !task.completed;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderListView(dateStr, holidays); // Re-render the list view
+        });
+        ul.appendChild(li); // Append the list item to the unordered list
+    });
+    listEl.appendChild(ul); // Append the unordered list to the day-list-view div
+};
 
 // Fetch public holiday data from the API for the current year in the US 
 async function fetchHolidays() {   

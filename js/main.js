@@ -88,8 +88,9 @@ function renderTasks() {
             saveData(); // Save the updated task list to localStorage
             updateTaskStats() // Update task statistics
         });
-
-        const deleteBtn = document.createElement('span'); // Create delete button
+        
+        // Create delete button
+        const deleteBtn = document.createElement('span'); 
         deleteBtn.innerHTML = '<img src="./icons/trash-icon.svg" alt="Delete Task" width="20" height="20">';
         deleteBtn.classList.add('delete-btn');
         deleteBtn.addEventListener('click', function(event) { // Add event listener for delete
@@ -99,7 +100,7 @@ function renderTasks() {
             saveData(); // Save the updated task list to localStorage
             updateTaskStats() // Update task statistics
         });
-        li.querySelector('.right-group').appendChild(deleteBtn); // Append delete button to the list item
+        li.querySelector('.right-group').appendChild(deleteBtn); // Append delete button to the right group in the list item
 
         taskList.appendChild(li);
     });
@@ -113,14 +114,14 @@ function parseESTDate(dateString) {
 }
 
 form.addEventListener('submit', function(event) { // Add event listener for form submission
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault(); // Prevents the default behavior of reloading the page
     
     // Select form elements
     const taskInput = document.querySelector('input[type="text"]');
     const priorityInput = document.querySelector('input[name="priority"]:checked');
     const dueDateInput = document.getElementById('due-date');
 
-    if (taskInput.value.trim() === '') { // Validate task input
+    if (taskInput.value.trim() === '') { // Validate that task name is not empty
         alert('Please enter a task.');
         return;
     }
@@ -139,7 +140,7 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         return;
     }
 
-    const today = new Date();
+    const today = new Date(); 
     today.setHours(0, 0, 0, 0); // Set to start of today
     const dueDate = parseESTDate(dueDateInput.value);
 
@@ -154,14 +155,15 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         priority: priorityInput.value,
         dueDate: dueDateInput.value,
         completed: false
-    }
+    };
     tasks.push(newTask); // Add the new task to the tasks array
 
     renderTasks();
     saveData(); // Save the updated task list to localStorage
+    
     // Clear form inputs
     taskInput.value = '';
-    document.querySelector('input[name="priority"]:checked').checked = false; // Reset priority selection
+    document.querySelector('input[name="priority"]:checked').checked = false;
     dueDateInput.value = '';
 });
 
