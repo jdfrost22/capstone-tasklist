@@ -20,7 +20,7 @@
 
         <fieldset>
             <legend>Priority:</legend>
-                <label>
+            <label>
                 <input type="radio" name="priority" value="high">
                 High
             </label>
@@ -40,6 +40,7 @@
         </div>
         <button type="submit">Add Task</button>
     </form>
+
     <div class="sort-options">
         <label for="sort-tasks">Sort by:</label>
         <select id="sort-tasks">
@@ -48,9 +49,11 @@
             <option value="due-date">Due Date</option>
         </select>
     </div>
+
     <div id="task-stats" class="task-stats">
         Completed: 0 | Remaining: 0 | Total: 0
     </div>
+    
     <ul id="task-list" class="task-list"></ul>
 
     <script src="./js/main.js"></script>

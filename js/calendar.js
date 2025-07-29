@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', async function() { // Display cale
     const localTasks = loadEventsFromLocalStorage();
     const holidays = await fetchHolidays();
     
+    const initialView = window.innerWidth < 600 ? 'dayGridDay' : 'dayGridMonth'; // Responsive view based on screen width 
+
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
+        initialView: initialView,
         events: [...holidays, ...localTasks],
         eventOrder: "classNames",
         eventContent: function(arg) {
