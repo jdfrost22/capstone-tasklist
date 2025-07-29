@@ -34,13 +34,11 @@ document.getElementById('sort-tasks').addEventListener('change', function(event)
 });
 
 const tasks = []; // Array to hold tasks
-
 const form = document.querySelector('form'); // Select the form element
 
 function renderTasks() {
     const taskList = document.getElementById('task-list');
     taskList.innerHTML = ''; // Clear existing tasks so that it doesn't duplicate
-
 
     tasks.forEach(task => {
         const li = document.createElement('li');
@@ -49,21 +47,22 @@ function renderTasks() {
         
         const dueDateObj = parseESTDate(task.dueDate); // Parse due date
         const now = new Date();
-        now.setHours(0, 0, 0, 0);
+        now.setHours(0, 0, 0, 0); // Set to start of today
 
+        // Calculate days until due
         let dueText= '';
-        const daysUntilDue = Math.ceil((dueDateObj - now) / (1000 * 60 * 60 * 24)); // Calculate days until due
+        const daysUntilDue = Math.ceil((dueDateObj - now) / (1000 * 60 * 60 * 24)); // Rounded to full days
         if (daysUntilDue === 0) {
             dueText = 'Due Today'; // If due today
         } else if (daysUntilDue === 1) {
             dueText = 'Due Tomorrow'; // If due tomorrow
         } else if (daysUntilDue < 0) {
             dueText = `OVERDUE`; // If overdue
-        }
-            else {
+        } else {
             dueText = `Due in ${daysUntilDue} days`; // If due in future
         }
-        
+
+        // Set inner HTML of the list item to have a left and right group
         li.innerHTML = `
             <div class="left-group">
                 <span class="task-text">${task.text}</span>
@@ -82,11 +81,12 @@ function renderTasks() {
         if (task.completed) {
             li.classList.add('completed'); // Add completed class if the task is completed
         }
+
         li.addEventListener('click', function() { // Toggle completed status on click
-            task.completed = !task.completed;
+            task.completed = !task.completed; 
             li.classList.toggle('completed');
             saveData(); // Save the updated task list to localStorage
-            updateTaskStats()
+            updateTaskStats() // Update task statistics
         });
 
         const deleteBtn = document.createElement('span'); // Create delete button
@@ -97,7 +97,7 @@ function renderTasks() {
             tasks.splice(tasks.indexOf(task), 1); // Remove task from array
             renderTasks(); // Re-render tasks
             saveData(); // Save the updated task list to localStorage
-            updateTaskStats()
+            updateTaskStats() // Update task statistics
         });
         li.querySelector('.right-group').appendChild(deleteBtn); // Append delete button to the list item
 
@@ -168,6 +168,7 @@ form.addEventListener('submit', function(event) { // Add event listener for form
 function saveData() {
     localStorage.setItem("tasks", JSON.stringify(tasks) ); // Save tasks array to localStorage
 }
+
 function loadData() {
     const savedTasks = localStorage.getItem("tasks"); // Get tasks from localStorage
     if (savedTasks) {

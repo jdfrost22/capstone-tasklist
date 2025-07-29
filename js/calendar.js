@@ -16,13 +16,14 @@ document.addEventListener('DOMContentLoaded', async function() { // Display cale
                     html: `<span class="task-icon">${icon}</span> <span class="task-text">${text}</span>`
                 };
             }
-            return true; // Default rendering for other events
+            return true; // Default rendering for holiday events
         }    
     });
     calendar.render();
 });
 
-async function fetchHolidays() {   // Fetch public holiday data from the API for the current year in the US 
+// Fetch public holiday data from the API for the current year in the US 
+async function fetchHolidays() {   
     const year = new Date().getFullYear();
     const url = `https://date.nager.at/api/v3/PublicHolidays/${year}/us`;
 
@@ -48,7 +49,8 @@ async function fetchHolidays() {   // Fetch public holiday data from the API for
     }
 }
 
-function loadEventsFromLocalStorage() {     // Load tasks from localStorage and convert them into FullCalendar event objects
+// Load tasks from localStorage and convert them into FullCalendar event objects
+function loadEventsFromLocalStorage() {     
     const priorityIcons = {
         high: '🔴',
         medium: '🟠',
