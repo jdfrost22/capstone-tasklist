@@ -159,6 +159,7 @@ form.addEventListener('submit', function(event) { // Add event listener for form
     tasks.push(newTask); // Add the new task to the tasks array
 
     renderTasks();
+    updateTaskStats(); 
     saveData(); // Save the updated task list to localStorage
     
     // Clear form inputs
