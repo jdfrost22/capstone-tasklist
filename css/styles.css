@@ -55,7 +55,6 @@ form {
     gap: 0.5rem;
     margin: 1rem;
     box-sizing: border-box;
-    
 }
 input[type="text"], input[type="date"] {
     width: 100%;
@@ -63,13 +62,11 @@ input[type="text"], input[type="date"] {
     box-sizing: border-box;
     border-radius: 20px;
 }
-
 fieldset {
     border: none;
     padding: 0;
     box-sizing: border-box;
 }
-
 button {
     background-color: #122C34;
     color: white;
@@ -114,7 +111,6 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-
 }
 .task-item.high {
     border-left: 15px solid #FF4B3E;
@@ -206,6 +202,9 @@ button:hover {
     background-color: transparent;
     border: none;
     margin-bottom: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    text-overflow: unset;
     
 }
 .fc-event.localTasks {
@@ -214,23 +213,33 @@ button:hover {
     
 }
 .fc .fc-button {
-        background-color: #00386c;
-        border: none;
-        padding: 0.25rem 0.5rem;
-        border-radius: 50px;
-        cursor: pointer;
-        width: 55px;
-        font-size: 0.75rem;
+    background-color: #00386c;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 55px;
+    font-size: 0.75rem;
 }
 .fc .fc-toolbar {
-        padding: 0.5rem;
-        display: flex !important;
-        justify-content: space-between;
-        flex-wrap: wrap;
+    padding: 0.5rem;
+    display: flex !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#day-list-view  {
+    width: 85%;
 }
 
 #day-list-view .task-list {
-  width: 95%; /* or 100% */
+    width: 100%;
+    padding-left: 0;
+}
+
+#day-list-view .task-item {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width:599px) {
@@ -248,7 +257,7 @@ button:hover {
         display: none;
     }
     .fc-event.holiday {
-        font-size: 0.2rem !important;
+        font-size: 0.5rem !important;
     }
 }
 
