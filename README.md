@@ -62,7 +62,8 @@ This project fulfills the following requirements from the assignment list:
 - `calendar.html` – Calendar view with holiday and task overlays and a day-list-view below  
 - `js/main.js` – Task management logic  
 - `js/calendar.js` – Calendar rendering and API integration  
-- `css/styles.css` – Styling for both views  
+- `css/styles.css` – Styling for both views
+- `icons` - folder holding icon images for delete button and navigation
 ---
 
 
