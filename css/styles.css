@@ -122,13 +122,18 @@ button:hover {
     border-left: 15px solid #99D17B;
 }
 .task-item.overdue { 
-    background-color: orange;;
+    background-color: rgb(72, 16, 0);
 }
+
 .task-item.due-today {
-    background-color: yellow;
+    background-color: rgb(31, 66, 0);
+}
+
+.task-item.due-today .due-date {
+    color: #38e40d;
 }   
 .task-item.overdue .due-date {
-    color: red;
+    color: rgb(228, 0, 0);
     font-weight: bold;
 }
 .task-item.completed {

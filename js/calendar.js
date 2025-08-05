@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', async function() { // Display calendar view once DOM content is fully loaded
+// Display calendar view once DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', async function() { 
     const calendarEl = document.getElementById('calendar');
     
     const localTasks = loadEventsFromLocalStorage();
@@ -34,7 +35,8 @@ document.addEventListener('DOMContentLoaded', async function() { // Display cale
     calendar.render();
 });
 
-function renderListView(dateStr, holidays) { // Render the list view for tasks on a specific date
+// Render the list view for tasks on a specific date
+function renderListView(dateStr, holidays) { 
     const listEl = document.getElementById('day-list-view');
     listEl.innerHTML = ''; // Clear previous content
 
@@ -113,7 +115,8 @@ function loadEventsFromLocalStorage() {
                 }
             };
         });
-    }   catch (error) {
+    } 
+    catch (error) {
         console.error('Error parsing tasks from localStorage:', error);
         return [];
     }

@@ -15,7 +15,7 @@ function sortByDefault() { // Sort by creation date (id)
 function updateTaskStats() {
     const completed = tasks.filter(task => task.completed).length; // Count completed tasks
     const uncompleted = tasks.length - completed; // Count uncompleted tasks
-    const stats = document.getElementById('task-stats');
+    const stats = document.getElementById('task-stats'); 
     if (stats) {
         stats.textContent = `Remaining: ${uncompleted} | Completed: ${completed} | Total: ${tasks.length}`;
     }
@@ -62,16 +62,7 @@ function renderTasks() {
             dueText = `Due in ${daysUntilDue} days`; // If due in future
         }
 
-        // Set inner HTML of the list item to have a left and right group
-        li.innerHTML = `
-            <div class="left-group">
-                <span class="task-text">${task.text}</span>
-            </div>
-            <div class="right-group">
-                <span class="due-date">${dueText}</span>
-            </div>
-        `;
-           
+        // Add classes based on due status
         if (dueDateObj < now) {
             li.classList.add('overdue'); // Add overdue class if the task is past due
         }
@@ -81,6 +72,16 @@ function renderTasks() {
         if (task.completed) {
             li.classList.add('completed'); // Add completed class if the task is completed
         }
+
+        // Set inner HTML of the list item to have a left and right group
+        li.innerHTML = `
+            <div class="left-group">
+                <span class="task-text">${task.text}</span>
+            </div>
+            <div class="right-group">
+                <span class="due-date">${dueText}</span>
+            </div>
+        `;
 
         li.addEventListener('click', function() { // Toggle completed status on click
             task.completed = !task.completed; 
@@ -130,7 +131,6 @@ form.addEventListener('submit', function(event) { // Add event listener for form
         alert('Enter a valid task name under 60 characters and no special characters except .,!?-');
         return;
     }
-
     if (!priorityInput) { // Validate priority input
         alert('Please select a priority.');
         return;
