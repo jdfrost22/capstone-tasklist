@@ -45,7 +45,7 @@ This project fulfills the following requirements from the assignment list:
 1. **Clone the Github repository.**
 2. Open the entire project folder in VS Code.
 3. Navigate to the project folder `capstone-tasklist`.
-4. Run `npm install` in the terminal. (Make sure that Node.js is installed)
+4. Run `npm install` in the terminal to install dependencies. (Make sure that Node.js is installed)
 5. Open the `index.html` file in your browser to access the task list view using the Live Server Extension in VS Code.
 6. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
 7. Click the list icon in the header to navigate back to the task list view and input form (`index.html`).
