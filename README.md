@@ -44,11 +44,12 @@ This project fulfills the following requirements from the assignment list:
 
 1. **Clone the Github repository.**
 2. Open the entire project folder in VS Code.
-3. Run `npm install`.
-4. Open the `index.html` file in your browser to access the task list view using the Live Server Extension in VS Code.
-5. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
-6. Click the list icon in the header to navigate back to the task list view and input form (`index.html`).
-7. To see the full functionality:
+3. Navigate to the project folder `capstone-tasklist`.
+4. Run `npm install` in the terminal.
+5. Open the `index.html` file in your browser to access the task list view using the Live Server Extension in VS Code.
+6. Click the calendar icon in the header to navigate to the calendar view (`calendar.html`).
+7. Click the list icon in the header to navigate back to the task list view and input form (`index.html`).
+8. To see the full functionality:
    - Add a few tasks with different priorities and due dates.
    - View them in both list and calendar formats.
    - Ensure you are connected to the internet so the holiday data can be fetched from the API.
